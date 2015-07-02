@@ -1,0 +1,17 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+node_modules/
+platforms/
+plugins/
+dist/
+**/.tmp/
+**/.sass-cache/
+www/lib/
+console.log
+.DS_Store
+.sass-cache/
+.tmp/
+*.orig
+coverage/
+engine/
