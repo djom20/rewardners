@@ -2,10 +2,10 @@
 
 // Configutation options for the application
 // Please add any global configuration parameters for here
-angular.module('rewarners').
+angular.module('rewardners').
   factory('Configuration', function() {
     angular.extend(this, {
-      appName: 'Rewarners',
+      appName: 'Rewardners',
       api: {
         protocol: 'http',
         server: 'localhost:3000',

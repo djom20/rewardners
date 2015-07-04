@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rewarnersServices')
+angular.module('rewardnersServices')
     .factory('CurrentSession', function($rootScope, $location, Configuration, Session) {
         var session = this.session || new Session();
 

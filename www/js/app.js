@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('rewarners', ['ionic', 'starter.controllers', 'starter.services',
+angular.module('rewardners', ['ionic', 'starter.controllers', 'starter.services',
     'ui.router',
-  'rewarnersServices',
+  'rewardnersServices',
   'ngCordova'])
 
 .config(function($stateProvider, $urlRouterProvider){
@@ -167,7 +167,7 @@ angular.module('rewarners', ['ionic', 'starter.controllers', 'starter.services',
 });
 
 // define the module
-angular.module('rewarnersServices', ['ngResource']);
+angular.module('rewardnersServices', ['ngResource']);
 
 // .config(function($stateProvider, $urlRouterProvider) {
 

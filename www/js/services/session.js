@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rewarnersServices')
+angular.module('rewardnersServices')
   .factory('Session', function() {
     return function (session) {
       angular.extend(this, {
