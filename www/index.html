@@ -16,7 +16,6 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- bower:js -->
-    <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-resource/angular-resource.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
@@ -27,22 +26,27 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
-    <!-- mouckps to be removed -->
     <script src="js/config.js"></script>
+    <!-- mouckps to be removed -->    
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
-    <!-- Services -->
+    <!-- Services --> 
+    <script src="js/services/apiResource.js"></script>
     <script src="js/services/currentSession.js"></script>
+    <script src="js/services/loginService.js"></script>
     <script src="js/services/session.js"></script>
+    <script src="js/services/user.js"></script>
+    <!-- Controllers -->
+    <script src="js/controllers/loginController.js"></script>
   </head>
   <body ng-app="rewardners">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
-    <ion-nav-bar class="bar-stable">
+    <!-- <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
       </ion-nav-back-button>
-    </ion-nav-bar>
+    </ion-nav-bar> -->
     <!--
       The views will be rendered in the <ion-nav-view> directive below
       Templates are in the /templates folder (but you could also

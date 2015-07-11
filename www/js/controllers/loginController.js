@@ -3,8 +3,9 @@
 angular.module('rewardners')
   .controller('LoginController', function($scope, $rootScope, $state, 
                                           // $ionicPopup,
-                                          User, CurrentSession, LoginService, RegistrationService,
-                                          // Article, Reminder, Baby, Event
+                                          User, CurrentSession, LoginService
+                                          // , RegistrationService
+                                          //, Article, Reminder, Baby, Event
                                           ) {
 
     var session = CurrentSession.session,
@@ -14,7 +15,6 @@ angular.module('rewardners')
     $scope.$parent.title = session.appName;
     $scope.auth = session.auth;
     $scope.session = session;
-    $scope.requestPin = requestPin;
     $scope.success = true;
     $scope.processing = false;
     // for debug only
@@ -24,8 +24,8 @@ angular.module('rewardners')
       var username = session.getItem('username');
       var password = session.getItem('password');
       if (username && password) {
-        $scope.auth.username = username;
-        $scope.auth.password = password;
+        $scope.user.username = username;
+        $scope.user.password = password;
         login();
       } else {
         console.log('no saved credentials. you need to login at least once')
@@ -55,7 +55,7 @@ angular.module('rewardners')
       if ($scope.quickLogin) {
         // save the username & password for quick debug login
         // this will only work in devint enviroment
-        session.setItem('username', $scope.auth.username);
+        session.setItem('username', $scope.auth.email);
         session.setItem('password', $scope.auth.password);
       }
 

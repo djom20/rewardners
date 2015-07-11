@@ -1,5 +1,5 @@
 'use strict';
-angular.module('nicuServices')
+angular.module('rewardnersServices')
 .factory('LoginService', function($rootScope, ApiResource, CurrentSession) {
   return {
 
