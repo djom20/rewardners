@@ -22,16 +22,11 @@ angular.module('rewardners', ['ionic', 'starter.controllers', 'starter.services'
         authentication: true
       }
     })
-    .state('login', {
-      url: '/login',
-      abstract: true,
-      templateUrl: 'views/login.html'
-    })
     .state('login.main', {
       url: '/main',
       views: {
         'login': {
-          templateUrl: 'views/login-main.html',
+          templateUrl: 'views/login.html',
           controller: 'LoginController'
         }
       }

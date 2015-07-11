@@ -9,13 +9,14 @@ angular.module('rewardners').
       api: {
         protocol: 'http',
         server: 'localhost:3000',
-        inactivityLimit: 1795     // seconds
+        inactivityLimit: 1795,    // seconds
+        secret_key: '7efbdd96fe6709bba8642b697f9d5e52'
       },
       loginUrl: function() {
-        return this.api.protocol + "://" + this.api.server + '/api/:rsrc';
+        return this.api.protocol + "://" + this.api.server + '/api/v1/:rsrc';
       },
       resourceUrl: function() {
-        return this.api.protocol + "://" + this.api.server + '/api/:resource/:id/:method'
+        return this.api.protocol + "://" + this.api.server + '/api/v1/:resource/:id/:method'
       },
       serverUri: function() {
         return this.api.protocol + '://' + this.api.server;
