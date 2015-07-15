@@ -16,18 +16,24 @@ angular.module('rewardners', ['ionic', 'starter.controllers', 'starter.services'
       templateUrl: 'views/login.html',
       controller: 'LoginController'
     })
-    // .state('home.main', {
-    //   url: '/main',
-    //   views: {
-    //     'content': {
-    //       templateUrl: 'views/home-main.html',
-    //       controller: 'HomeController'
-    //     }
-    //   },
-    //   data: {
-    //     authentication: true
-    //   }
-    // })
+    .state('home', {
+      url: '/neo',
+      abstract: true,
+      templateUrl: 'views/home.html',
+      controller: 'MainController'
+    })
+    .state('home.main', {
+      url: '/main',
+      views: {
+        'content': {
+          templateUrl: 'views/home-main.html',
+          controller: 'HomeController'
+        }
+      },
+      data: {
+        authentication: true
+      }
+    })
     
     // .state('register', {
     //   url: '/register',
