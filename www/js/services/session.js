@@ -6,7 +6,7 @@ angular.module('rewardnersServices')
       angular.extend(this, {
         auth: {},
         authentication_token: null,
-        member: null,
+        user: null,
 
         hasStorage: function() {
           return 'localStorage' in window && window['localStorage'] !== null;
@@ -22,13 +22,13 @@ angular.module('rewardnersServices')
         },
         // functions
         isAuthenticated: function () {
-          // make sure we set the state to correct flag and have security token and member is an object
-          return (this.auth.state == 'logged_in' &&  this.authentication_token && this.member);
+          // make sure we set the state to correct flag and have security token and user is an object
+          return (this.auth.state == 'logged_in' &&  this.authentication_token && this.user);
         },
         clearSession: function () {
           this.auth = {};
           this.authentication_token = null;
-          this.member = null;
+          this.user = null;
         }
       });
       angular.extend(this, session);

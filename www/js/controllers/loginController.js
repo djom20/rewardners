@@ -63,7 +63,7 @@ angular.module('rewardners')
       resource.$promise
         .then(function (data) {
           session.authentication_token = data.authentication_token;
-          session.user = new User({id: data.person.id});
+          session.user = new User({id: data.user.id});
           session.auth.state = 'logged_in';
           delete session.auth.password;
 

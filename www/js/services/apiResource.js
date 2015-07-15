@@ -5,25 +5,26 @@ angular.module('rewardnersServices')
   var transformBase = function(custom_headers){
     return function(data, headers) {
       headers = angular.extend(headers(), custom_headers);
-      data.token_info = {
-        'security_token': CurrentSession.session.security_token,
-        'person_id': CurrentSession.session.member.id
-      };
+      if(CurrentSession.session.isAuthenticated()){
+        data.token_info = {
+          'X-User-Token': CurrentSession.session.authentication_token
+        };  
+      }
       return(JSON.stringify(data));
     }
   };
 
   return $resource (
     CurrentSession.session.resourceUrl(),
-   // 'http://localhost:3000/api/:resource/:id/:method',
+    // 'http://localhost:3000/api/:resource/:id/:method',
     // $rootScope.baseUrl + ':resource',
     {},
     {
-      'index': {method: 'POST', transformRequest: transformBase()},
-      'show': {method: 'POST', transformRequest: transformBase()},
+      'index': {method: 'GET', transformRequest: transformBase()},
+      'show': {method: 'GET', transformRequest: transformBase()},
       'create': {method: 'POST', transformRequest: transformBase()},
       'update': {method: 'PUT', transformRequest: transformBase()},
-      'delete': {method: 'POST', transformRequest: transformBase()}
+      'delete': {method: 'DELETE', transformRequest: transformBase()}
     }
   );
 });
