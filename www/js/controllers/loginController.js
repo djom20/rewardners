@@ -62,8 +62,9 @@ angular.module('rewardners')
       resource = LoginService.login({email: $scope.auth.email, password: $scope.auth.password});
       resource.$promise
         .then(function (data) {
-          session.authentication_token = data.authentication_token;
-          session.user = new User({id: data.user.id});
+          var sessionData = data.sessions[0];
+          session.authentication_token = sessionData.authentication_token;
+          session.user = new User(sessionData);
           session.auth.state = 'logged_in';
           delete session.auth.password;
 
