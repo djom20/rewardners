@@ -2,7 +2,7 @@
 
 angular.module('rewardners', ['ionic', 'starter.controllers', 'starter.services',
     'ui.router',
-  'rewardnersServices',
+  'rewardnersServices', 'ionic.utils',
   'ngCordova'])
 
 .config(function($stateProvider, $urlRouterProvider){

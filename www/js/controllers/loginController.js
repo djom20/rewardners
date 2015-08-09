@@ -3,22 +3,13 @@
 angular.module('rewardners')
   .controller('LoginController', function($scope, $rootScope, $state, 
                                           // $ionicPopup,
-                                          User, CurrentSession, LoginService
+                                          User, CurrentSession, LoginService,
+                                          $localstorage, $ionicModal
                                           // , RegistrationService
                                           //, Article, Reminder, Baby, Event
                                           ) {
 
-    var session = CurrentSession.session,
-        retries = 0,
-        resource;
-
-    $scope.$parent.title = session.appName;
-    $scope.auth = session.auth;
-    $scope.session = session;
-    $scope.success = true;
-    $scope.processing = false;
-    // for debug only
-    $scope.quickLogin = (session.quicklogin !== undefined && session.quicklogin.enabled);
+    var session, resource;
 
     $scope.debugLogin = function() {
       var username = session.getItem('username');
@@ -49,7 +40,37 @@ angular.module('rewardners')
       }
     };
 
+    $scope.showModal = function(templateUrl) {
+      $ionicModal.fromTemplateUrl(templateUrl, {
+      scope: $scope,
+      animation: 'slide-in-up'
+      }).then(function(modal) {
+      $scope.modal = modal;
+      $scope.modal.show();
+      });
+    }
+
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+      $scope.modal.remove()
+      $localstorage.get("video_seen", "seen");
+    };
+
+    initalize();
+
     /***********  Private functions *****************/
+
+    function initalize(){
+      session = CurrentSession.session;
+      $scope.$parent.title = session.appName;
+      $scope.auth = session.auth;
+      $scope.session = session;
+      $scope.processing = false;
+      $scope.video_seen = $localstorage.get("video_seen") !== undefined;
+      // for debug only
+      $scope.quickLogin = (session.quicklogin !== undefined && session.quicklogin.enabled);
+      showIntroductionVideo();
+    };
 
     function login() {
       if ($scope.quickLogin) {
@@ -88,4 +109,13 @@ angular.module('rewardners')
           $scope.processing = false;
         });
     }
+
+    function showIntroductionVideo(){
+      if(!$scope.video_seen){
+        $scope.showModal("views/modals/introduction_video.html");
+      }
+    }
+
+
+
   });

@@ -1,1 +1,6 @@
 /* Empty. Add your own CSS if you like */
+.centerme {
+    margin: 0 auto;
+    width: 100%;
+    height:100%;
+}

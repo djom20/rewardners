@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('nicu')
+angular.module('rewardners')
   .controller('HomeController', function($scope, $rootScope, $state, $stateParams, 
       $ionicModal, $ionicScrollDelegate, $timeout, CurrentSession,
       ContentItemForm, HomeEntry, Feed, TrackingItem, TrackingItemHelper, TrackingItemModal, NeoPopup) {
