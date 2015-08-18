@@ -1,0 +1,51 @@
+<ion-content >
+  <div class="card">
+    <div class=" list">
+      <label class="item item-input">
+        <span class="input-label">Email</span>
+        <input type="text" ng-model="registration_data.email">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Password</span>
+        <input type="password" ng-model="registration_data.password">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Confirm Password</span>
+        <input type="password" ng-model="registration_data.password_confirmation">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Name</span>
+        <input type="text" ng-model="registration_data.name">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Last name</span>
+        <input type="text" ng-model="registration_data.last_name">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">City</span>
+        <input type="text" ng-model="registration_data.city">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Zip Code</span>
+        <input type="text" ng-model="registration_data.zipcode">
+      </label>
+
+
+      <li class="item item-checkbox my-checkbox-class">
+         <label class="checkbox checkbox-royal">
+           <input type="checkbox" ng-model="registration_data.terms" ng-true-value="'1'" ng-false-value="'0'">
+         </label>
+         I Accept the Terms and Conditions
+      </li>
+      <label class="item" ng-click="showTerms()">
+        <a href=""><b>Tap Here</b></a> to view them.
+      </label>
+
+    </div>
+    <div class="padding">
+      <button class="button button-block button-positive" ng-click="submit()">
+        Sign up
+      </button>
+    </div>
+  </div>
+</ion-content>

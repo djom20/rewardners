@@ -3,7 +3,7 @@ angular.module('rewardners')
                                            CurrentSession) {
     // sanity check
     if (!CurrentSession.session.isAuthenticated())
-      $state.go('login.main');
+      $state.go('login');
 
     // application start time
     var session = CurrentSession.session;
@@ -16,7 +16,7 @@ angular.module('rewardners')
 
     $scope.logout = function () {
       session.clearSession();
-      $state.go('login.main');
+      $state.go('login');
     };
 
   });

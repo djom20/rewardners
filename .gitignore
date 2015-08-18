@@ -7,7 +7,6 @@ plugins/
 dist/
 **/.tmp/
 **/.sass-cache/
-www/lib/
 console.log
 .DS_Store
 .sass-cache/

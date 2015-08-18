@@ -1,6 +1,6 @@
 'use strict';
 angular.module('rewardnersServices')
-.factory('LoginService', function($rootScope, ApiResource, CurrentSession) {
+.factory('LoginService', function(ApiResource, CurrentSession) {
   return {
 
     login: function(params) {

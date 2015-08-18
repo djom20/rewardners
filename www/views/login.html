@@ -1,32 +1,35 @@
-<ion-view view-title="Sign-In">
+<ion-view view-title="Rewarders">
   <ion-content>
-
-    <ion-popover-view>
-      <ion-header-bar>
-        <h1 class="title">My Popover Title</h1>
-      </ion-header-bar>
-      <ion-content>
-        Hello!
-      </ion-content>
-    </ion-popover-view>
-
-    <div class="list">
-      <label class="item item-input">
-        <span class="input-label">Username</span>
-        <input type="text" ng-model="auth.email">
-      </label>
-      <label class="item item-input">
-        <span class="input-label">Password</span>
-        <input type="password" ng-model="auth.password">
-      </label>
+    <div class="card">
+      <div class="item">
+        <img src="/img/apple-touch-icon-114x114.png">
+      </div>
+      <div class=" list">
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="text" ng-model="auth.email">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="auth.password">
+        </label>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="submit()">
+          Sign in
+        </button>
+        <p class="text-right">
+          <a href="#/forgot-password">Forgot password</a>
+        </p>
+      </div>
     </div>
     <div class="padding">
-      <button class="button button-block button-positive" ng-click="submit()">
-        Sign-In
-      </button>
-      <p class="text-center">
-        <a href="#/forgot-password">Forgot password</a>
-      </p>
-    </div>
+        <p class="text-center">
+          or
+        </p>
+        <button class="button button-block button-royal" ng-click="register()">
+          Sign up
+        </button>
+      </div>
   </ion-content>
 </ion-view>

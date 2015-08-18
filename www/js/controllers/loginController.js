@@ -1,12 +1,9 @@
 'use strict';
 
 angular.module('rewardners')
-  .controller('LoginController', function($scope, $rootScope, $state, 
-                                          // $ionicPopup,
+  .controller('LoginController', function($scope, $rootScope, $state,
                                           User, CurrentSession, LoginService,
-                                          $localstorage, $ionicModal
-                                          // , RegistrationService
-                                          //, Article, Reminder, Baby, Event
+                                          $localstorage, $ionicModal, $ionicPopup
                                           ) {
 
     var session, resource;
@@ -29,32 +26,28 @@ angular.module('rewardners')
 
     $scope.submit = function () {
       $scope.processing = true;
-      // no state there for we are here for the first time
-      if (!session.auth.state) {
-        // we have entered the password
-        login();
-      } else {
-        // this is a bad state
-        session.auth.state = undefined;
-        $scope.processing = false;
-      }
+      login();
     };
 
     $scope.showModal = function(templateUrl) {
       $ionicModal.fromTemplateUrl(templateUrl, {
-      scope: $scope,
-      animation: 'slide-in-up'
+        scope: $scope,
+        animation: 'slide-in-up'
       }).then(function(modal) {
-      $scope.modal = modal;
-      $scope.modal.show();
+        $scope.modal = modal;
+        $scope.modal.show();
       });
     }
 
     $scope.closeModal = function() {
       $scope.modal.hide();
-      $scope.modal.remove()
-      $localstorage.get("video_seen", "seen");
+      $scope.modal.remove();
+      $localstorage.set("video_seen", "seen");
     };
+
+    $scope.register = function(){
+      $state.go('register.main');
+    }
 
     initalize();
 
@@ -105,6 +98,10 @@ angular.module('rewardners')
         }, function (data) {
           console.log('got an error from the API ');
           console.log(data);
+          $ionicPopup.alert({
+            title: 'Login Error',
+            template: 'Please verify your credentials and try again.'
+          });
           $scope.invalidPassword = true;
           $scope.processing = false;
         });

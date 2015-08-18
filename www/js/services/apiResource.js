@@ -5,10 +5,11 @@ angular.module('rewardnersServices')
   var transformBase = function(custom_headers){
     return function(data, headers) {
       headers = angular.extend(headers(), custom_headers);
+      data = data || {};
       if(CurrentSession.session.isAuthenticated()){
         data.token_info = {
           'X-User-Token': CurrentSession.session.authentication_token
-        };  
+        };
       }
       return(JSON.stringify(data));
     }

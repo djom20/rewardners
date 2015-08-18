@@ -7,49 +7,7 @@ angular.module('rewardnersServices')
   var NESTED_MODELS = {}
   var DEFAULT_CUSTOM_OBJECTS = [];
 
-  var instanceModel = function(ModelType, _instance_attrs_){
-    var instance = new ModelType(_instance_attrs_);
-    angular.copy(instance, instance.previousAttributes);
-    return instance;
-  };
-
-  var loadModel = function(model, data, deferred){
-    var ModelType = model;
-    if (angular.isArray(data[resource]) && (resource in data)) {
-      var models = [];
-      angular.forEach(data[resource], function (raw_instance_attrs) {
-        models.push(instanceModel(ModelType, getAttributes(raw_attrs)));
-      });
-      deferred.resolve(models)
-    }
-    else {
-      var user = instanceModel(ModelType, getAttributes(data[raw_attrs]));
-      deferred.resolve(user);
-    }
-  };
-
-  var getAttributes = function(attributes){
-    var _data = {};
-    for (var property in attributes){
-      var value = attributes[property];
-      if (value instanceof Object) {
-        var nestedModel = NESTED_MODELS[property];
-        if (nestedModel) {
-          if (value instanceof Array){
-            _data[property] = [];
-            for (var index = 0; index < value.length; index++){
-              _data[property].push(new nestedModel(value[index], true))
-            }
-          }else{
-            _data[property] = new nestedModel(value, true)
-          }
-        }
-      }else{
-        _data[property] = value;
-      }
-    }
-    return _data;
-  };
+  
 
   var BaseModel = function BaseModel(properties, options) {
     this.$initialize.apply(this, arguments);
@@ -124,7 +82,7 @@ angular.module('rewardnersServices')
           _deferred.resolve(current);
         },
         function(error){
-          _deferred.reject({status: error.status, message: error.data.status.message});
+          _deferred.reject({status: error.status, message: error.statusText});
         });
 
       return _deferred.promise;
@@ -143,7 +101,7 @@ angular.module('rewardnersServices')
           _deferred.resolve(current);
         },
         function (error) {
-          _deferred.reject({status: error.status, message: error.data.status.message})
+          _deferred.reject({status: error.status, message: error.statusText})
         });
 
       return _deferred.promise;
@@ -160,7 +118,7 @@ angular.module('rewardnersServices')
         loadModel(model, data, _deferred);
       },
       function(error){
-        _deferred.reject({status: error.status, message: error.data.status.message})
+        _deferred.reject({status: error.status, message: error.statusText})
       }
     );
     return _deferred.promise;
@@ -182,6 +140,50 @@ angular.module('rewardnersServices')
     return child;
   };
 
+  BaseModel.instanceModel = function(ModelType, _instance_attrs_){
+    var instance = new ModelType(_instance_attrs_);
+    angular.copy(instance, instance.previousAttributes);
+    return instance;
+  };
+
+  BaseModel.loadModel = function(model, data, deferred){
+    var ModelType = model;
+    if (angular.isArray(data[resource]) && (resource in data)) {
+      var models = [];
+      angular.forEach(data[resource], function (raw_instance_attrs) {
+        models.push(instanceModel(ModelType, getAttributes(raw_attrs)));
+      });
+      deferred.resolve(models)
+    }
+    else {
+      var user = instanceModel(ModelType, getAttributes(data[raw_attrs]));
+      deferred.resolve(user);
+    }
+  };
+
+  BaseModel.getAttributes = function(attributes){
+    var _data = {};
+    for (var property in attributes){
+      var value = attributes[property];
+      if (value instanceof Object) {
+        var nestedModel = NESTED_MODELS[property];
+        if (nestedModel) {
+          if (value instanceof Array){
+            _data[property] = [];
+            for (var index = 0; index < value.length; index++){
+              _data[property].push(new nestedModel(value[index], true))
+            }
+          }else{
+            _data[property] = new nestedModel(value, true)
+          }
+        }
+      }else{
+        _data[property] = value;
+      }
+    }
+    return _data;
+  };
+
     // TODO remove this if not needed
   // User.all = function() {
   //   var model = this;
@@ -192,7 +194,7 @@ angular.module('rewardnersServices')
   //     function(data){
   //       loadModel(model, data, _deferred);
   //     }, function(error){
-  //       _deferred.reject({status: error.status, message: error.data.status.message})
+  //       _deferred.reject({status: error.status, message: error.statusText})
   //     }
   //   );
   //   return _deferred.promise;

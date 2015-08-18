@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('rewardners', ['ionic', 'starter.controllers', 'starter.services',
-    'ui.router',
+angular.module('rewardners', ['ionic', 'ui.router',
   'rewardnersServices', 'ionic.utils',
   'ngCordova'])
 
@@ -17,7 +16,7 @@ angular.module('rewardners', ['ionic', 'starter.controllers', 'starter.services'
       controller: 'LoginController'
     })
     .state('home', {
-      url: '/neo',
+      url: '/home',
       abstract: true,
       templateUrl: 'views/home.html',
       controller: 'MainController'
@@ -34,29 +33,35 @@ angular.module('rewardners', ['ionic', 'starter.controllers', 'starter.services'
         authentication: true
       }
     })
-    
-    // .state('register', {
-    //   url: '/register',
-    //   abstract: true,
-    //   templateUrl: 'views/login.html'
-    // })
-    // .state('register.main', {
-    //   url: '/main',
-    //   views: {
-    //     'login': {
-    //       templateUrl: 'views/register-main.html',
-    //       controller: 'RegistrationController'
-    //     }
-    //   }
-    // })
-    // .state('register.success', {
-    //   url: '/success',
-    //   views: {
-    //     'login': {
-    //       templateUrl: 'views/register-success.html'
-    //     }
-    //   }
-    // })
+
+    .state('test', {
+      url: '/test',
+      templateUrl: 'views/intro.html',
+      controller: 'TestController'
+    })
+
+    .state('register', {
+      url: '/register',
+      abstract: true,
+      templateUrl: 'views/register.html'
+    })
+    .state('register.main', {
+      url: '/main',
+      views: {
+        'registration': {
+          templateUrl: 'views/register-main.html',
+          controller: 'RegistrationController'
+        }
+      }
+    })
+    .state('register.success', {
+      url: '/success',
+      views: {
+        'registration': {
+          templateUrl: 'views/register-success.html'
+        }
+      }
+    })
     // .state('reset.password', {
     //   url: '/password',
     //   views: {
@@ -82,55 +87,7 @@ angular.module('rewardners', ['ionic', 'starter.controllers', 'starter.services'
     //     }
     //   }
     // })
-
-  // TODO: remove these mockups
-  // setup an abstract state for the tabs directive
-  .state('tab', {
-    url: "/tab",
-    abstract: true,
-    templateUrl: "templates/tabs.html"
-  })
-
-  // Each tab has its own nav history stack:
-
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  });;
+    ;
 })
 
 .run(function($ionicPlatform, $rootScope, $state, CurrentSession) {
@@ -159,7 +116,7 @@ angular.module('rewardners', ['ionic', 'starter.controllers', 'starter.services'
         event.preventDefault();
         // test for authentication
         console.log('redirect to login');
-        $state.go('login.main');
+        $state.go('login');
       }
     });
   });

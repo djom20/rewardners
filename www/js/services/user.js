@@ -33,7 +33,7 @@ angular.module('rewardnersServices')
           _deferred.resolve(current);
         },
         function(error){
-          _deferred.reject({status: error.status, message: error.data.status.message});
+          _deferred.reject({status: error.status, message: error.statusText});
         });
 
       return _deferred.promise;

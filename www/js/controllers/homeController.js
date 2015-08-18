@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('rewardners')
-  .controller('HomeController', function($scope, $rootScope, $state, $stateParams, 
-      $ionicModal, $ionicScrollDelegate, $timeout, CurrentSession,
-      ContentItemForm, HomeEntry, Feed, TrackingItem, TrackingItemHelper, TrackingItemModal, NeoPopup) {
+  .controller('HomeController', function($scope, $rootScope, $state, $stateParams,
+      $ionicModal, Promo, CurrentSession) {
     var session = CurrentSession.session;
 
     $scope.user = session.user;
@@ -26,7 +25,6 @@ angular.module('rewardners')
         $scope.getPromos();
       }else{
         $scope.promos = session.promos;
-        $scope.$broadcast('scroll.infiniteScrollComplete');
       }
     };
 
@@ -35,32 +33,23 @@ angular.module('rewardners')
 
       if(!$rootScope.loadingPromos){
         $rootScope.loadingPromos = true;
-        Promo.show(session.user.id, session.promos.length)
+        Promo.trendings()
           .then(function(promos) {
             if(promos.length > 0){
               session.promos = session.promos.concat(promos);
               $scope.promos = session.promos;
-              $scope.noMoreEntriesAvailable = false;
+              $scope.noMorePromosAvailable = false;
             }else{
               console.log("NO more feed items.");
-              $scope.noMoreEntriesAvailable = true;
+              $scope.noMorePromosAvailable = true;
             }
-            $timeout($rootScope.setFeedAsComplete, 1500);
+            $rootScope.loadingPromos = false;
           }, function(){
-            $timeout($rootScope.setFeedAsComplete, 1500);
+            console.log("An error happened matching Promos");
           });
       }
     };
 
     $scope.setPromos();
-
-    $scope.$watchCollection(function(){
-      return session.promos || [];
-    }, function(){
-      if(session.promos){
-        $scope.promos = session.promos;
-        $scope.noMoreEntriesAvailable = false;
-      }
-    });
 
   });
