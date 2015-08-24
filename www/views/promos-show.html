@@ -1,0 +1,51 @@
+<ion-view view-title="{{promo.title}}">
+  <ion-content class="padding">
+    <div class="list">
+
+      <div class="item item-thumbnail-left" >
+        <img src="{{promo.getBannerUrl()}}">
+        <h2>{{promo.name}}</h2>
+        <div class="row">
+          <a href="#" ><img src="/img/share.svg"></a>
+          <a href="#" ><img src="/img/facebook.svg"></a>
+          <a href="#" ><img src="/img/twitter.svg"></a>
+          <a href="#" ><img src="/img/star.svg"></a>
+        </div>
+      </div>
+       <div class="item item-body">
+         <p ng-bind-html="promo.description"></p>
+      </div>
+
+
+      <div class="padding" ng-if="!promo.taken()">
+        <button class="button button-block button-positive" ng-click="takePromo()">
+          Take Promo
+        </button>
+      </div>
+      <div class="card" ng-if="promo.taken()">
+        <div class="item">
+          <h1 class="text-center">Promo Taken!</h1>
+          <p class="text-center">Click the icon to generate the QR Code for the promo</p>
+          <div class="row row-center">
+            <div class="col"></div>
+            <div class="col">
+              <img src="/img/qr_gen.png" ng-click="generateQr()" ng-show="!showQr">
+              <qrcode data="{{promo.promo_code}}" href="{{promo.promo_code}}" size="100" ng-show="showQr"></qrcode>
+            </div>
+            <div class="col"></div>
+            
+
+          </div>
+        </div>
+      </div>
+      <div class="card" ng-if="promo.taken()">
+        <div class="item">
+          <p class="text-center">or</p>
+          <p class="text-center">Share the following code with the cashier</p>
+        </div>
+        <b class="button button-block button-positive">{{promo.promo_code}}</b>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

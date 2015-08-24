@@ -77,20 +77,8 @@ angular.module('rewardners')
       resource.$promise
         .then(function (data) {
           var sessionData = data.sessions[0];
-          session.authentication_token = sessionData.authentication_token;
-          session.user = new User(sessionData);
-          session.auth.state = 'logged_in';
+          handleSessionData(sessionData)
           delete session.auth.password;
-
-          // TODO load promos
-          // Promos.all({}).then(
-          //   function(promos) {
-          //     session.member.promos = promos.sortBy("start");
-          //     $scope.promos = session.member.promos;
-          //   },
-          //   function(promos) {
-          //     console.log('error getting promos from API');
-          //   });
 
           // now go home.main
           $state.go('home.main');
@@ -110,6 +98,21 @@ angular.module('rewardners')
     function showIntroductionVideo(){
       if(!$scope.video_seen){
         $scope.showModal("views/modals/introduction_video.html");
+      }
+    }
+
+    function handleSessionData(sessionData){
+      session.authentication_token = sessionData.authentication_token;
+      session.user = new User(sessionData);
+      session.auth.state = 'logged_in';
+      $localstorage.set("rew_session", sessionData);
+    }
+
+    function loadSessionAndRedirect() {
+      sessionData = $localstorage.get("rew_session");
+      if (sessionData !== null){
+        handleSessionData(sessionData);
+        $state.go('home.main');
       }
     }
 

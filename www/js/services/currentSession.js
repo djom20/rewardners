@@ -13,6 +13,7 @@ angular.module('rewardnersServices')
         function logout(){
           console.log('login out');
           session.clearSession();
+          $localstorage.set("rew_session", null);
           $location.path('/login/main');
         }
 

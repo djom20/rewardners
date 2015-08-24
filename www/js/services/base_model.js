@@ -148,16 +148,17 @@ angular.module('rewardnersServices')
 
   BaseModel.loadModel = function(model, data, deferred){
     var ModelType = model;
+    resource = ModelType.metadata().resource;
     if (angular.isArray(data[resource]) && (resource in data)) {
-      var models = [];
+      var model_intances = [];
       angular.forEach(data[resource], function (raw_instance_attrs) {
-        models.push(instanceModel(ModelType, getAttributes(raw_attrs)));
+        model_intances.push(BaseModel.instanceModel(ModelType, BaseModel.getAttributes(raw_instance_attrs)));
       });
-      deferred.resolve(models)
+      deferred.resolve(model_intances)
     }
     else {
-      var user = instanceModel(ModelType, getAttributes(data[raw_attrs]));
-      deferred.resolve(user);
+      var model_instance = BaseModel.instanceModel(ModelType, BaseModel.getAttributes(data[data[resource]]));
+      deferred.resolve(model_instance);
     }
   };
 

@@ -2,7 +2,7 @@
 
 angular.module('rewardners', ['ionic', 'ui.router',
   'rewardnersServices', 'ionic.utils',
-  'ngCordova'])
+  'ngCordova', 'monospaced.qrcode'])
 
 .config(function($stateProvider, $urlRouterProvider){
   // default path
@@ -25,8 +25,21 @@ angular.module('rewardners', ['ionic', 'ui.router',
       url: '/main',
       views: {
         'content': {
-          templateUrl: 'views/home-main.html',
-          controller: 'HomeController'
+          templateUrl: 'views/promos-index.html',
+          controller: 'PromosController'
+        }
+      },
+      data: {
+        authentication: true
+      }
+    })
+    .state('home.promo', {
+      url: '/main',
+      params: { promo: null },
+      views: {
+        'content': {
+          templateUrl: 'views/promos-show.html',
+          controller: 'PromoController'
         }
       },
       data: {

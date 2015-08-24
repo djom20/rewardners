@@ -11,6 +11,9 @@ angular.module('rewardnersServices')
     $constructor: function User(properties) {
       this.$initialize.apply(this, arguments);
     },
+    defaultOptions: function() {
+      return {};
+    },
 
     save: function () {
       var current = this,
@@ -56,6 +59,12 @@ angular.module('rewardnersServices')
     }
 
   });
+  User.metadata = function() {
+      return {
+        resource: resource,
+        resource_singular: resource_singular
+      };
+  };
 
   return User;
 });

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('rewardners')
-  .controller('HomeController', function($scope, $rootScope, $state, $stateParams,
-      $ionicModal, Promo, CurrentSession) {
+  .controller('PromosController', function($scope, $rootScope, $state,
+      Promo, CurrentSession) {
     var session = CurrentSession.session;
 
     $scope.user = session.user;
@@ -12,6 +12,11 @@ angular.module('rewardners')
     $scope.fullname = (session.user) ? session.user.full_name : '';
 
     //.:: ::.
+
+    $scope.initialize = function(){
+      $scope.setPromos();
+      $scope.getTakenPromos();
+    };
 
     $scope.loadMore = function(){
       console.log("Loading Feed items...");
@@ -44,12 +49,28 @@ angular.module('rewardners')
               $scope.noMorePromosAvailable = true;
             }
             $rootScope.loadingPromos = false;
-          }, function(){
+          }, function(error){
             console.log("An error happened matching Promos");
           });
       }
     };
 
-    $scope.setPromos();
+    $scope.getTakenPromos = function(){
+      session.taken_promos = session.taken_promos || [];
+      if(session.taken_promos.length <= 0){
+        Promo.taken()
+        .then(function(promos) {
+            session.taken_promos = session.promos.concat(promos);
+        }, function(error){
+          console.log("An error happened matching the Taken Promos");
+        });
+      }
+    };
+
+    $scope.showPromo = function () {
+      $state.go('home.promo', { promo: this.promo } );
+    };
+
+    $scope.initialize();
 
   });
