@@ -16,16 +16,7 @@
   },
   "cordovaPlugins": [
     "com.ionic.keyboard",
-    {
-      "locator": "engine/cordova-crosswalk-engine-c0.7.1",
-      "id": "cordova-plugin-crosswalk-webview"
-    },
     "org.apache.cordova.splashscreen"
   ],
-  "cordovaPlatforms": [
-    {
-      "platform": "android",
-      "locator": "./engine/cordova-android-c0.6.1/"
-    }
-  ]
+  "cordovaPlatforms": []
 }

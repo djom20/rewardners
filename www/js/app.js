@@ -49,7 +49,7 @@ angular.module('rewardners', ['ionic', 'ui.router',
 
     .state('test', {
       url: '/test',
-      templateUrl: 'views/intro.html',
+      templateUrl: 'views/test.html',
       controller: 'TestController'
     })
 
