@@ -16,17 +16,13 @@
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-assertive">
-      <h1 class="title">Left Menu</h1>
+      <h1 class="title">{{sideMenu}}</h1>
     </ion-header-bar>
     <ion-content>
       <ul class="list">
         <!-- Note each link has the 'menu-close' attribute so the menu auto closes when clicking on one of these links -->
-        <a href="#/event/check-in" class="item" menu-close>Coupons</a>
-        <a href="#/event/check-in" class="item" menu-close>Favorites</a>
-        <a href="#/event/check-in" class="item" menu-close>Stars</a>
-        <a href="#/event/check-in" class="item" menu-close>Redeems</a>
-        <a href="#/event/check-in" class="item" menu-close>Settings</a>
-        <a href="#/event/check-in" class="item" menu-close>Log out</a>
+        <a href="{{menuItem.href}}" class="item" menu-close ng-repeat="menuItem in menuItems">{{menuItem.title}}</a>
+        <a href="#" class="item" menu-close ng-click="logout()" >Log out</a>
       </ul>
     </ion-content>
   </ion-side-menu>

@@ -47,6 +47,20 @@ angular.module('rewardners', ['ionic', 'ui.router',
       }
     })
 
+    .state('home.places', {
+      url: '/places',
+      params: { promo: null },
+      views: {
+        'content': {
+          templateUrl: 'views/places-index.html',
+          controller: 'PlacesController'
+        }
+      },
+      data: {
+        authentication: true
+      }
+    })
+
     .state('test', {
       url: '/test',
       templateUrl: 'views/test.html',

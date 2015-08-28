@@ -19,7 +19,7 @@ angular.module('rewardners')
     };
 
     $scope.loadMore = function(){
-      console.log("Loading Feed items...");
+      console.log("Loading Promos...");
       $scope.getPromos();
     };
 

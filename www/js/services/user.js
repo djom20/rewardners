@@ -56,7 +56,11 @@ angular.module('rewardnersServices')
         fullname += this.last_name + " ";
       }
       return fullname;
-    }
+    },
+
+    hasBussinessRole: function(){
+      this.roles.indexOf("business") > -1;
+    } 
 
   });
   User.metadata = function() {
