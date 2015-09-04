@@ -22,7 +22,7 @@ angular.module('rewardners', ['ionic', 'ui.router',
       controller: 'MainController'
     })
     .state('home.main', {
-      url: '/main',
+      url: '/promos',
       views: {
         'content': {
           templateUrl: 'views/promos-index.html',
@@ -34,7 +34,7 @@ angular.module('rewardners', ['ionic', 'ui.router',
       }
     })
     .state('home.promo', {
-      url: '/main',
+      url: '/promo',
       params: { promo: null },
       views: {
         'content': {
@@ -47,13 +47,53 @@ angular.module('rewardners', ['ionic', 'ui.router',
       }
     })
 
+    .state('home.pending_promos', {
+      url: '/pending_promos',
+      params: { promo: null },
+      views: {
+        'content': {
+          templateUrl: 'views/pending-promos-index.html',
+          controller: 'PendingPromoController'
+        }
+      },
+      data: {
+        authentication: true
+      }
+    })
+
+    .state('home.favorites', {
+      url: '/favorites',
+      views: {
+        'content': {
+          templateUrl: 'views/promos-index.html',
+          controller: 'FavoritePromosController'
+        }
+      },
+      data: {
+        authentication: true
+      }
+    })
+
     .state('home.places', {
       url: '/places',
-      params: { promo: null },
       views: {
         'content': {
           templateUrl: 'views/places-index.html',
           controller: 'PlacesController'
+        }
+      },
+      data: {
+        authentication: true
+      }
+    })
+
+    .state('home.place', {
+      url: '/place',
+      params: { place: null },
+      views: {
+        'content': {
+          templateUrl: 'views/places-show.html',
+          controller: 'PlaceController'
         }
       },
       data: {

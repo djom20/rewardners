@@ -1,0 +1,32 @@
+<ion-view view-title="Coupons status">
+  <ion-content class="padding">
+    <div class="list">
+
+      <!-- <div class="item item-thumbnail-left" collection-repeat="takenPromo in takenPromos" > -->
+        <!-- <img src="{{takenPromo.promo.getBannerUrl()}}"> -->
+      <div class="item" collection-repeat="takenPromo in takenPromos" >
+        <div class="row row-center">
+          <div class="col">
+            <h2>{{takenPromo.promo.name}}</h2>
+            <p>{{takenPromo.date}}</p>
+          </div>
+          <div class="col" ng-if="takenPromo.pending()">
+            <button class="button button-positive" ng-click="approve()">
+              <i class="icon ion-checkmark"></i>
+            </button>
+            <button class="button button-dark" ng-click="reject()">
+              <i class="icon ion-close"></i>
+            </button>
+          </div>
+          <div class="col" ng-if="!takenPromo.pending()">
+            <p ng-if="takenPromo.approved()" >Approved</p>
+            <p ng-if="takenPromo.rejected()" >Rejected</p>
+          </div>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

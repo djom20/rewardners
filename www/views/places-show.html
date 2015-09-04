@@ -1,0 +1,27 @@
+<ion-view view-title="{{place.title}}">
+  <ion-content class="padding">
+    <div class="list">
+
+      <div class="item item-thumbnail-left" >
+        <img src="{{place.getLogoUrl()}}">
+        <h2>{{place.name}}</h2>
+        <h3>{{place.address}}</h3>
+        <h3>{{place.phone}}</h3>
+      </div>
+      <div class="item">
+        <h2 class="title">Available Coupons</h2>
+      </div>
+    
+      <div class="item">
+        <div class="list">
+          <a class="item item-thumbnail-left" href="#" ng-repeat="promo in promos" ng-click="showPromo()">
+            <img src="{{promo.getBannerUrl()}}">
+            <h2>{{promo.name}}</h2>
+            <p ng-bind-html="promo.description"></p>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

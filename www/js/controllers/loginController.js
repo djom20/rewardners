@@ -96,9 +96,9 @@ angular.module('rewardners')
     }
 
     function showIntroductionVideo(){
-      if(!$scope.video_seen){
+      // if(!$scope.video_seen){
         $scope.showModal("views/modals/introduction_video.html");
-      }
+      // }
     }
 
     function handleSessionData(sessionData){

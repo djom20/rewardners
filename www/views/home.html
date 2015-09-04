@@ -20,7 +20,6 @@
     </ion-header-bar>
     <ion-content>
       <ul class="list">
-        <!-- Note each link has the 'menu-close' attribute so the menu auto closes when clicking on one of these links -->
         <a href="{{menuItem.href}}" class="item" menu-close ng-repeat="menuItem in menuItems">{{menuItem.title}}</a>
         <a href="#" class="item" menu-close ng-click="logout()" >Log out</a>
       </ul>

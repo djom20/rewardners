@@ -33,7 +33,6 @@
               <qrcode data="{{promo.promo_code}}" href="{{promo.promo_code}}" size="100" ng-show="showQr"></qrcode>
             </div>
             <div class="col"></div>
-            
 
           </div>
         </div>
@@ -41,9 +40,9 @@
       <div class="card" ng-if="promo.taken()">
         <div class="item">
           <p class="text-center">or</p>
-          <p class="text-center">Share the following code with the cashier</p>
+          <p class="text-center">Share your email with the cashier</p>
         </div>
-        <b class="button button-block button-positive">{{promo.promo_code}}</b>
+        <b class="button disabled button-block button-positive">{{user.email}}</b>
       </div>
 
     </div>

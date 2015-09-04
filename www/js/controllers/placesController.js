@@ -9,13 +9,11 @@ angular.module('rewardners')
     $scope.title = session.appName;
     $scope.sideMenu = 'Menu';
     $scope.items = [];
-    $scope.fullname = (session.user) ? session.user.full_name : '';
 
     //.:: ::.
 
     $scope.initialize = function(){
       $scope.setPlaces();
-      $scope.getTakenPlaces();
     };
 
     $scope.loadMore = function(){
@@ -38,10 +36,10 @@ angular.module('rewardners')
 
       if(!$rootScope.loadingPlaces){
         $rootScope.loadingPlaces = true;
-        Places.own()
+        Place.own()
           .then(function(places) {
             if(places.length > 0){
-              session.places = session.places.concat(Places);
+              session.places = session.places.concat(places);
               $scope.places = session.places;
               $scope.noMorePlacesAvailable = false;
             }else{
@@ -53,6 +51,10 @@ angular.module('rewardners')
             console.log("An error happened matching Places");
           });
       }
+    };
+
+    $scope.showPlace = function () {
+      $state.go('home.place', { place: this.place } );
     };
 
     $scope.initialize();

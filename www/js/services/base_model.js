@@ -152,30 +152,33 @@ angular.module('rewardnersServices')
     if (angular.isArray(data[resource]) && (resource in data)) {
       var model_intances = [];
       angular.forEach(data[resource], function (raw_instance_attrs) {
-        model_intances.push(BaseModel.instanceModel(ModelType, BaseModel.getAttributes(raw_instance_attrs)));
+        model_intances.push(BaseModel.instanceModel(ModelType, BaseModel.getAttributes(raw_instance_attrs, ModelType)));
       });
       deferred.resolve(model_intances)
     }
     else {
-      var model_instance = BaseModel.instanceModel(ModelType, BaseModel.getAttributes(data[data[resource]]));
+      var model_instance = BaseModel.instanceModel(ModelType, BaseModel.getAttributes(data[data[resource]], ModelType));
       deferred.resolve(model_instance);
     }
   };
 
-  BaseModel.getAttributes = function(attributes){
+  BaseModel.getAttributes = function(attributes, ModelType){
     var _data = {};
     for (var property in attributes){
       var value = attributes[property];
       if (value instanceof Object) {
-        var nestedModel = NESTED_MODELS[property];
-        if (nestedModel) {
-          if (value instanceof Array){
-            _data[property] = [];
-            for (var index = 0; index < value.length; index++){
-              _data[property].push(new nestedModel(value[index], true))
+        var nested_models = ModelType.metadata().nested_models;
+        if (typeof nested_models !== 'undefined'){
+          var nestedModel = nested_models[property];
+          if (nestedModel) {
+            if (value instanceof Array){
+              _data[property] = [];
+              for (var index = 0; index < value.length; index++){
+                _data[property].push(new nestedModel(value[index], true))
+              }
+            }else{
+              _data[property] = new nestedModel(value, true)
             }
-          }else{
-            _data[property] = new nestedModel(value, true)
           }
         }
       }else{
@@ -184,22 +187,6 @@ angular.module('rewardnersServices')
     }
     return _data;
   };
-
-    // TODO remove this if not needed
-  // User.all = function() {
-  //   var model = this;
-  //   var modelInstance = new model();
-  //   var _deferred = $q.defer();
-  //   var deferred = ApiResource.index({resource: resource}, modelInstance.defaultOptions() );
-  //   deferred.$promise.then(
-  //     function(data){
-  //       loadModel(model, data, _deferred);
-  //     }, function(error){
-  //       _deferred.reject({status: error.status, message: error.statusText})
-  //     }
-  //   );
-  //   return _deferred.promise;
-  // };
-
+  
   return BaseModel;
 });

@@ -59,7 +59,7 @@ angular.module('rewardnersServices')
     },
 
     hasBussinessRole: function(){
-      this.roles.indexOf("business") > -1;
+      return this.roles.indexOf("business") > -1;
     } 
 
   });

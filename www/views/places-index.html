@@ -1,0 +1,14 @@
+<ion-view view-title="Locations">
+  <ion-content class="padding">
+    <div class="list">
+
+      <a class="item item-thumbnail-left" href="#" collection-repeat="place in places" ng-click="showPlace()">
+        <img src="{{place.getLogoUrl()}}">
+        <h2>{{place.name}}</h2>
+        <p ng-bind-html="place.name"></p>
+        <p ng-bind-html="place.phone"></p>
+      </a>
+
+    </div>
+  </ion-content>
+</ion-view>

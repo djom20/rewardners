@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rewardnersServices')
-    .factory('Session', function() {
+    .factory('Session', function($ionicHistory) {
     return function (session) {
       angular.extend(this, {
         auth: {},
@@ -28,7 +28,12 @@ angular.module('rewardnersServices')
         clearSession: function () {
           this.auth = {};
           this.authentication_token = null;
+          this.promos = undefined;
+          this.takenPromos = undefined;
+          this.favoritePromos = undefined;
           this.user = null;
+          $ionicHistory.clearCache();
+          $ionicHistory.clearHistory();
         }
       });
       angular.extend(this, session);

@@ -15,7 +15,7 @@ angular.module('rewardners')
 
     $scope.initialize = function(){
       $scope.setPromos();
-      $scope.getTakenPromos();
+      // $scope.getTakenPromos();
     };
 
     $scope.loadMore = function(){
