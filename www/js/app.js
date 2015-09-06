@@ -2,7 +2,8 @@
 
 angular.module('rewardners', ['ionic', 'ui.router',
   'rewardnersServices', 'ionic.utils',
-  'ngCordova', 'monospaced.qrcode'])
+  'ngCordova', 'monospaced.qrcode', 'monospaced.elastic',
+  'ionic-datepicker'])
 
 .config(function($stateProvider, $urlRouterProvider){
   // default path
@@ -40,6 +41,19 @@ angular.module('rewardners', ['ionic', 'ui.router',
         'content': {
           templateUrl: 'views/promos-show.html',
           controller: 'PromoController'
+        }
+      },
+      data: {
+        authentication: true
+      }
+    })
+    .state('home.promo_new', {
+      url: '/promo_new',
+      params: { place: null },
+      views: {
+        'content': {
+          templateUrl: 'views/promo_new.html',
+          controller: 'PromoNewController'
         }
       },
       data: {
@@ -89,6 +103,7 @@ angular.module('rewardners', ['ionic', 'ui.router',
 
     .state('home.place', {
       url: '/place',
+      cache: false,
       params: { place: null },
       views: {
         'content': {
@@ -186,9 +201,36 @@ angular.module('rewardners', ['ionic', 'ui.router',
         $state.go('login');
       }
     });
+
+    $rootScope.defaultDatePickerOptions = defaultDatePickerOptions();
+
   });
 });
 
 // define the module
 angular.module('rewardnersServices', ['ngResource']);
 
+function defaultDatePickerOptions(){
+  return {
+      // titleLabel: 'Title',  //Optional
+      // todayLabel: 'Today',  //Optional
+      // closeLabel: 'Close',  //Optional
+      // setLabel: 'Set',  //Optional
+      setButtonType : 'button-positive',  //Optional
+      todayButtonType : 'button-positive',  //Optional
+      closeButtonType : 'button-positive',  //Optional
+      // inputDate: new Date(),    //Optional
+      // mondayFirst: true,    //Optional
+      // disabledDates: disabledDates, //Optional
+      // weekDaysList: weekDaysList,   //Optional
+      // monthList: monthList, //Optional
+      templateType: 'popup', //Optional
+      modalHeaderColor: 'bar-positive', //Optional
+      modalFooterColor: 'bar-positive', //Optional
+      // from: new Date(2012, 8, 2),   //Optional
+      // to: new Date(2018, 8, 25),    //Optional
+      // callback: function (val) {    //Mandatory
+      //   datePickerCallback(val);
+      // }
+    };
+}

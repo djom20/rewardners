@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('rewardnersServices')
-.factory('Promo', function(ApiResource, $q, BaseModel) {
+.factory('Promo', function(ApiResource, $q, BaseModel, Place) {
   var resource = "promos";
   var resource_singular = "promo";
   var bannerUrl; 
+  var NESTED_MODELS = {place: Place};
 
   var Promo = BaseModel.extend({
     $constructor: function Promo(properties) {
@@ -48,7 +49,8 @@ angular.module('rewardnersServices')
   Promo.metadata = function() {
       return {
         resource: resource,
-        resource_singular: resource_singular
+        resource_singular: resource_singular,
+        nested_models: NESTED_MODELS
       };
   };
 

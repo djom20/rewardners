@@ -46,7 +46,9 @@ angular.module('rewardnersServices')
               changed[property + "_attributes"] = nestedModelObject.$changedAttributes();
             }
             else {
-              changed[property + "_attributes"] = value.$changedAttributes();
+              if (value.$changedAttributes) {
+                changed[property + "_attributes"] = value.$changedAttributes();
+              }
             }
           }
           else {
@@ -63,20 +65,21 @@ angular.module('rewardnersServices')
 
     save: function () {
       var current = this,
+        currentMetadata = current.$constructor.metadata(),
         _deferred = $q.defer(),
         data = current.$changedAttributes(),
         deferred;
 
       if (this.isNew()) {
         var resource_data = {};
-        resource_data[resource_singular] = data;
-        deferred = ApiResource.create({resource: resource}, resource_data);
+        resource_data[currentMetadata.resource_singular] = data;
+        deferred = ApiResource.create({resource: currentMetadata.resource}, resource_data);
       } else {
-        deferred = ApiResource.update({resource: resource, id: current.id}, {user: data});
+        deferred = ApiResource.update({resource: currentMetadata.resource, id: current.id}, {user: data});
       }
       deferred.$promise.then(
         function(response){
-          var _data = getAttributes(response[resource_singular]);
+          var _data = BaseModel.getAttributes(response[currentMetadata.resource][0], current.$constructor);
           angular.extend(current, _data)
           angular.copy(_data, current.previousAttributes);
           _deferred.resolve(current);
@@ -90,12 +93,13 @@ angular.module('rewardnersServices')
 
     fetch: function () {
       var current = this,
+        currentMetadata = current.$constructor.metadata(),
         _deferred = $q.defer(),
-        deferred = ApiResource.show({resource: resource, id: current.id}, current.defaultOptions());
+        deferred = ApiResource.show({resource: currentMetadata.resource, id: current.id}, current.defaultOptions());
 
       deferred.$promise.then(
         function (data) {
-          var _data = getAttributes(data[resource_singular]);
+          var _data = BaseModel.getAttributes(data[currentMetadata.resource][0], current.$constructor);
           angular.extend(current, _data);
           angular.copy(_data, current.previousAttributes);
           _deferred.resolve(current);
@@ -110,9 +114,10 @@ angular.module('rewardnersServices')
 
   BaseModel.find = function(id){
     var model = this;
+    var currentMetadata = model.metadata();
     var modelInstance = new model();
     var _deferred = $q.defer();
-    var deferred = ApiResource.show({resource: resource, id: id}, modelInstance.defaultOptions() );
+    var deferred = ApiResource.show({resource: currentMetadata.resource, id: id}, modelInstance.defaultOptions() );
     deferred.$promise.then(
       function(data){
         loadModel(model, data, _deferred);

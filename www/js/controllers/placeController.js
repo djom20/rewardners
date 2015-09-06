@@ -30,6 +30,11 @@ angular.module('rewardners')
       $state.go('home.promo', { promo: this.promo } );
     };
 
+    $scope.newPromo = function () {
+      $state.go('home.promo_new', { place: $scope.place } );
+    };
+
+
     $scope.setPlace();
 
   });

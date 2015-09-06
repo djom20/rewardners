@@ -1,0 +1,72 @@
+<ion-view view-title="{{title}}">
+  <ion-nav-buttons side="right">
+  </ion-nav-buttons>
+  <ion-content >
+    <div class="card">
+      <div class=" list">
+        <label class="item item-input">
+          <span class="input-label">Name</span>
+          <input type="text" ng-model="promo.name">
+        </label>
+        <label class="item ">
+          <div class="input-label">Description</div>
+          
+        </label>
+        <label class="item item-input">
+          <textarea ng-model="promo.description" msd-elastic placeholder="Coupon's description..." cols="2" ></textarea>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Banner</span>
+          <input type="file" ng-model="promo.banner">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Initial Date</span>
+          <!-- <input type="date" ng-model="promo.start_at"> -->
+          <ionic-datepicker input-obj="startAtDatePicker">
+            <button class="button button-block button-positive"> {{promo.start_at || "Select a date"}}</button>
+          </ionic-datepicker>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Final Date</span>
+          <!--  <input type="date" ng-model="promo.end_at"> -->
+          <ionic-datepicker input-obj="endAtDatePicker">
+            <button class="button button-block button-positive"> {{promo.end_at || "Select a date"}}</button>
+          </ionic-datepicker>
+        </label>
+
+        <div class="item item-checkbox my-checkbox-class">
+           <label class="checkbox checkbox-royal">
+             <input type="checkbox" ng-model="promo.published" ng-true-value="'1'" ng-false-value="'0'">
+           </label>
+           Published
+        </div>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Role
+          </div>
+          <select ng-model="promo.role_id">
+            <option ng-repeat="role in roles" value="role.name">{{role.name}}</option>
+          </select>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Stars number</span>
+          <input type="number" ng-model="promo.star_number" min="0">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Terms and conditions</span>
+        </label>
+        <label class="item item-input">
+          <textarea ng-model="promo.extra_description" msd-elastic placeholder="Coupon's terms and condition..."></textarea>
+        </label>
+
+
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="submit()">
+          Create Coupon
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
