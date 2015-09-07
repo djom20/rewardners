@@ -29,7 +29,8 @@ angular.module('rewardners')
     function setMenuItems(){
       $scope.menuItems = [
         { title: "Coupons", href: "#/home/promos"},
-        { title: "Favorites", href: "#/home/favorites"}
+        { title: "Coupons taken", href: "#/home/promos_taken"}
+        // { title: "Favorites", href: "#/home/favorites"}
         // ,
         // { title: "Stars", href: "#"},
         // { title: "Redeems", href: "#"},

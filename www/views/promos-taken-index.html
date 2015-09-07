@@ -1,0 +1,13 @@
+<ion-view view-title="Coupons Taken">
+  <ion-content class="padding">
+    <div class="list">
+
+      <a class="item item-thumbnail-left" href="#" collection-repeat="promo in promosTaken" ng-click="showPromo()">
+        <img src="{{promo.getBannerUrl()}}">
+        <h2>{{promo.name}}</h2>
+        <p ng-bind-html="promo.description"></p>
+      </a>
+
+    </div>
+  </ion-content>
+</ion-view>

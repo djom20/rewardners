@@ -5,12 +5,13 @@
       <div class="item item-thumbnail-left" >
         <img src="{{promo.getBannerUrl()}}">
         <h2>{{promo.name}}</h2>
-        <div class="row">
+        <h3>Ends at: {{promo.end_at | date:'dd-MM-yyyy'}}</h2>
+        <!-- <div class="row">
           <a href="#" ><img src="/img/share.svg"></a>
           <a href="#" ><img src="/img/facebook.svg"></a>
           <a href="#" ><img src="/img/twitter.svg"></a>
           <a href="#" ><img src="/img/star.svg"></a>
-        </div>
+        </div> -->
       </div>
        <div class="item item-body">
          <p ng-bind-html="promo.description"></p>

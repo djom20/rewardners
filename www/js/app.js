@@ -35,6 +35,19 @@ angular.module('rewardners', ['ionic', 'ui.router',
         authentication: true
       }
     })
+    .state('home.promos_taken', {
+      url: '/promos_taken',
+      cache: false,
+      views: {
+        'content': {
+          templateUrl: 'views/promos-taken-index.html',
+          controller: 'PromosTakenController'
+        }
+      },
+      data: {
+        authentication: true
+      }
+    })
     .state('home.promo', {
       url: '/promo',
       params: { promo: null },
