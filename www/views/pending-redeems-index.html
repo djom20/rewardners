@@ -1,0 +1,24 @@
+<ion-view view-title="Redeems">
+  <ion-content class="padding">
+    <div class="list">
+
+      <a class="item" href="#" collection-repeat="pendingRedeem in pendingRedeems" ng-click="newRedeem()">
+        <div class="row row-center">
+          <div class="col col-75">
+            <h2>{{pendingRedeem.user_name}}</h2>
+            <p>{{pendingRedeem.user_email}}</p>
+            <p>{{pendingRedeem.place_name}}</p>
+          </div>
+          <div class="col text-center">
+            <h2>
+              <b>{{pendingRedeem.stars}}</b>
+              <i class="icon ion-star"></i>
+            </h2>
+          </div>
+
+        </div>
+      </a>
+
+    </div>
+  </ion-content>
+</ion-view>

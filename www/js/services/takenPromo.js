@@ -53,8 +53,12 @@ angular.module('rewardnersServices')
     };
   };
 
-  TakenPromo.pendingApproval = function(userId) {
+  TakenPromo.pendingApproval = function() {
     return TakenPromo.listByAction("pending_approval");
+  };
+
+  TakenPromo.promoCodeSearch = function(promoCode) {
+    return TakenPromo.listByAction("promo_code_search", {promo_code: promoCode});
   };
 
   TakenPromo.listByAction = function listByAction(action, extra_params){

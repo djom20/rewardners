@@ -20,7 +20,7 @@ angular.module('rewardners')
     $scope.submit = function () {
       $scope.promo.save().then(function(promoSaved){
         var successPopup = $ionicPopup.alert({
-          template: 'New coupon created'
+          title: 'New coupon created'
         });
         successPopup.then(function(){
           $state.go('home.place', { place: $scope.place } );

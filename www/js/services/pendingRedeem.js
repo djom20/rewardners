@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('rewardnersServices')
-.factory('Role', function(ApiResource, $q, BaseModel) {
-  var resource = "roles";
-  var resource_singular = "role";
+.factory('PendingRedeem', function(ApiResource, $q, BaseModel) {
+  var resource = "redeems";
+  var resource_singular = "redeem";
+  var NESTED_MODELS = {};
 
-  var Role = BaseModel.extend({
-    $constructor: function Role(properties) {
+  var PendingRedeem = BaseModel.extend({
+    $constructor: function PendingRedeem(properties) {
       this.$initialize.apply(this, arguments);
     },
     defaultOptions: function() {
@@ -15,18 +16,19 @@ angular.module('rewardnersServices')
 
   });
 
-  Role.metadata = function() {
-    return {
-      resource: resource,
-      resource_singular: resource_singular
-    };
+  PendingRedeem.metadata = function() {
+      return {
+        resource: resource,
+        resource_singular: resource_singular,
+        nested_models: NESTED_MODELS
+      };
   };
 
-  Role.all = function() {
-    return Role.listByAction();
+  PendingRedeem.pending = function() {
+    return PendingRedeem.listByAction("pending");
   };
 
-  Role.listByAction = function listByAction(action, extra_params){
+  PendingRedeem.listByAction = function listByAction(action, extra_params){
     extra_params = typeof extra_params !== 'undefined' ? extra_params : {};
     var resourceParams = {resource: resource, method: action}; 
     angular.extend(resourceParams, extra_params);
@@ -47,5 +49,5 @@ angular.module('rewardnersServices')
 
 
 
-  return Role;
+  return PendingRedeem;
 });

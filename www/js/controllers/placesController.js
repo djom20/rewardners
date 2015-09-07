@@ -16,11 +16,6 @@ angular.module('rewardners')
       $scope.setPlaces();
     };
 
-    $scope.loadMore = function(){
-      console.log("Loading Places...");
-      $scope.getPlaces();
-    };
-
     $scope.setPlaces = function() {
 
       if (typeof session.Places === "undefined") {

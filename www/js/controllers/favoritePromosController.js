@@ -18,11 +18,6 @@ angular.module('rewardners')
       $scope.getTakenPromos();
     };
 
-    $scope.loadMore = function(){
-      console.log("Loading Promos...");
-      $scope.getPromos();
-    };
-
     $scope.setPromos = function() {
 
       if (typeof session.promos === "undefined") {

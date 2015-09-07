@@ -24,6 +24,7 @@ angular.module('rewardners', ['ionic', 'ui.router',
     })
     .state('home.main', {
       url: '/promos',
+      cache: false,
       views: {
         'content': {
           templateUrl: 'views/promos-index.html',
@@ -63,7 +64,8 @@ angular.module('rewardners', ['ionic', 'ui.router',
 
     .state('home.pending_promos', {
       url: '/pending_promos',
-      params: { promo: null },
+      cache: false,
+      params: { takenPromos: null },
       views: {
         'content': {
           templateUrl: 'views/pending-promos-index.html',
@@ -74,6 +76,35 @@ angular.module('rewardners', ['ionic', 'ui.router',
         authentication: true
       }
     })
+
+    .state('home.pending_redeems', {
+      url: '/pending_redeems',
+      cache: false,
+      views: {
+        'content': {
+          templateUrl: 'views/pending-redeems-index.html',
+          controller: 'PendingRedeemsController'
+        }
+      },
+      data: {
+        authentication: true
+      }
+    })
+    .state('home.redeem_new', {
+      url: '/redeem_new',
+      cache: false,
+      params: { pendingRedeem: null },
+      views: {
+        'content': {
+          templateUrl: 'views/redeem-new.html',
+          controller: 'RedeemNewController'
+        }
+      },
+      data: {
+        authentication: true
+      }
+    })
+
 
     .state('home.favorites', {
       url: '/favorites',

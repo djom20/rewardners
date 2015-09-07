@@ -39,7 +39,8 @@ angular.module('rewardners')
       if ($scope.user.hasBussinessRole()){ 
         $scope.menuItems = $scope.menuItems.concat([
           { title: "Places", href: "#/home/places"},
-          { title: "Coupons status", href: "#/home/pending_promos"}
+          { title: "Coupons status", href: "#/home/pending_promos"},
+          { title: "Redeems", href: "#/home/pending_redeems"}
         ]);
       }
 
