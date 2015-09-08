@@ -2,7 +2,7 @@
 
 angular.module('rewardners')
   .controller('PendingPromoController', function($scope, $state, $stateParams,
-      $ionicPopup,
+      $ionicPopup, $cordovaBarcodeScanner,
       TakenPromo, CurrentSession) {
     var session = CurrentSession.session;
 
