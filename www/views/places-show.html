@@ -1,6 +1,6 @@
 <ion-view view-title="{{place.title}}">
-  <ion-nav-buttons side="right" ng-if="user.hasBussinessRole()">
-    <button class="button button-icon button-clear ion-android-add-circle" ng-click="newPromo()"> new Coupon
+  <ion-nav-buttons side="right">
+    <button class="button button-icon button-clear ion-android-add-circle" ng-click="newPromo()" ng-if="place.belongsToUser(user)"> new Coupon
     </button>
   </ion-nav-buttons>
   <ion-content class="padding">

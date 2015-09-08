@@ -27,6 +27,10 @@ angular.module('rewardnersServices')
         logoUrl = this.logo_medium;
       }
       return logoUrl;
+    },
+
+    belongsToUser: function belongsToUser(user){
+      return this.user_id == user.id;
     }
 
   });

@@ -19,6 +19,7 @@ angular.module('rewardners', ['ionic', 'ui.router',
     .state('home', {
       url: '/home',
       abstract: true,
+      cache: false,
       templateUrl: 'views/home.html',
       controller: 'MainController'
     })
