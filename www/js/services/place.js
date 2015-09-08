@@ -14,7 +14,7 @@ angular.module('rewardnersServices')
     },
 
     getBannerUrl: function getBannerUrl(){
-      var bannerUrl = "/img/banner_default.png";
+      var bannerUrl = "./img/banner_default.png";
       if(!(this.banner_medium.indexOf("banner_default.png") > -1)){
         bannerUrl = this.banner_medium;
       }
@@ -22,7 +22,7 @@ angular.module('rewardnersServices')
     },
 
     getLogoUrl: function getLogoUrl(){
-      var logoUrl = "/img/default-logo.png";
+      var logoUrl = "./img/default-logo.png";
       if(!(this.logo_medium.indexOf("default-logo.png") > -1)){
         logoUrl = this.logo_medium;
       }

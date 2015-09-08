@@ -7,10 +7,10 @@
         <h2>{{promo.name}}</h2>
         <h3>Ends at: {{promo.end_at | date:'dd-MM-yyyy'}}</h2>
         <!-- <div class="row">
-          <a href="#" ><img src="/img/share.svg"></a>
-          <a href="#" ><img src="/img/facebook.svg"></a>
-          <a href="#" ><img src="/img/twitter.svg"></a>
-          <a href="#" ><img src="/img/star.svg"></a>
+          <a href="#" ><img src="./img/share.svg"></a>
+          <a href="#" ><img src="./img/facebook.svg"></a>
+          <a href="#" ><img src="./img/twitter.svg"></a>
+          <a href="#" ><img src="./img/star.svg"></a>
         </div> -->
       </div>
        <div class="item item-body">
@@ -30,7 +30,7 @@
           <div class="row row-center">
             <div class="col"></div>
             <div class="col">
-              <img src="/img/qr_gen.png" ng-click="generateQr()" ng-show="!showQr">
+              <img src="./img/qr_gen.png" ng-click="generateQr()" ng-show="!showQr">
               <qrcode data="{{promo.promo_code}}" href="{{promo.promo_code}}" size="100" ng-show="showQr"></qrcode>
             </div>
             <div class="col"></div>

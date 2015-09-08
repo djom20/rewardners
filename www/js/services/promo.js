@@ -19,7 +19,7 @@ angular.module('rewardnersServices')
     getBannerUrl: function getBannerUrl(){
 
       if (this.bannerUrl === undefined) {
-        this.bannerUrl = "/img/promo_default.png";
+        this.bannerUrl = "./img/promo_default.png";
         if(!(this.banner_medium.indexOf("promo_default.png") > -1)){
           this.bannerUrl = this.banner_medium;
         }
