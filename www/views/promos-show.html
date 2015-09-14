@@ -4,21 +4,23 @@
 
       <div class="item item-thumbnail-left" >
         <img src="{{promo.getBannerUrl()}}">
-        <h2>{{promo.name}}</h2>
+        <h2><b>{{promo.name}}</b></h2>
+        <h2>{{promo.place.name}}</h2>
         <h3>Ends at: {{promo.end_at | date:'dd-MM-yyyy'}}</h2>
-        <!-- <div class="row">
-          <a href="#" ><img src="./img/share.svg"></a>
+        <div class="row">
+          <!-- <a href="#" ><img src="./img/share.svg"></a>
           <a href="#" ><img src="./img/facebook.svg"></a>
-          <a href="#" ><img src="./img/twitter.svg"></a>
-          <a href="#" ><img src="./img/star.svg"></a>
-        </div> -->
+          <a href="#" ><img src="./img/twitter.svg"></a> -->
+          <a class="button button-clear icon ion-android-favorite-outline" href="#" ng-click="like()" ng-if="!promo.place.liked_by_user"></a>
+          <a class="button button-clear icon ion-android-favorite disabled" href="#" ng-if="promo.place.liked_by_user"></a>
+        </div>
       </div>
-       <div class="item item-body">
+      <div class="item item-body">
          <p ng-bind-html="promo.description"></p>
       </div>
 
 
-      <div class="padding" ng-if="!promo.taken()">
+      <div class="padding" ng-if="!promo.taken() && !promo.place.belongsToUser(user)">
         <button class="button button-block button-positive" ng-click="takePromo()">
           Take Promo
         </button>
@@ -45,7 +47,6 @@
         </div>
         <b class="button disabled button-block button-positive">{{user.email}}</b>
       </div>
-
     </div>
   </ion-content>
 </ion-view>

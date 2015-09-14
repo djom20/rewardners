@@ -59,10 +59,9 @@ angular.module('rewardners')
       $scope.auth = session.auth;
       $scope.session = session;
       $scope.processing = false;
-      $scope.video_seen = $localstorage.get("video_seen") !== undefined;
       // for debug only
       $scope.quickLogin = (session.quicklogin !== undefined && session.quicklogin.enabled);
-      showIntroductionVideo();
+      // showIntroductionVideo();
     };
 
     function login() {
@@ -96,6 +95,7 @@ angular.module('rewardners')
     }
 
     function showIntroductionVideo(){
+      $scope.video_seen = $localstorage.get("video_seen") !== undefined;
       // if(!$scope.video_seen){
         $scope.showModal("views/modals/introduction_video.html");
       // }

@@ -31,6 +31,22 @@ angular.module('rewardnersServices')
 
     belongsToUser: function belongsToUser(user){
       return this.user_id == user.id;
+    },
+
+    // should be doFavorite but the api reffer the action as 'like'
+    like: function like(){
+      var _deferred = $q.defer();
+      var self = this;
+      var deferred = ApiResource.create({resource: resource, id: this.id, method: "like"},
+        this.defaultOptions() );
+      deferred.$promise.then(
+        function(data){
+          self.liked_by_user = true;
+          _deferred.resolve(self);
+        }, function(error){
+          _deferred.reject({status: error.status, message: error.statusText});
+        });
+      return _deferred.promise;
     }
 
   });
@@ -42,7 +58,7 @@ angular.module('rewardnersServices')
       };
   };
 
-  Place.own = function() {
+  Place.owned = function() {
     var model = this;
     var modelInstance = new model();
     var _deferred = $q.defer();

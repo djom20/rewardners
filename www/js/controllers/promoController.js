@@ -37,6 +37,23 @@ angular.module('rewardners')
       $scope.showQr = true;
     };
 
+    $scope.like = function like(){
+      $scope.promo.place.like().then(
+        function(){
+          $ionicPopup.alert({
+            title: 'Place added to favorites',
+            template: $scope.promo.place.name + "has been added to your favorites."
+          });
+        }, function(error){
+          console.log('got an error from the API');
+          console.log(error);
+          $ionicPopup.alert({
+            title: 'An error just Happened',
+            template: 'Please try again later.'
+          });
+        });
+    };
+
     $scope.setPromo();
 
   });

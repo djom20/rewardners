@@ -31,7 +31,7 @@ angular.module('rewardners')
 
       if(!$rootScope.loadingPlaces){
         $rootScope.loadingPlaces = true;
-        Place.own()
+        Place.owned()
           .then(function(places) {
             if(places.length > 0){
               session.places = session.places.concat(places);
