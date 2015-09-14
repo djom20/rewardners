@@ -1,5 +1,4 @@
 'use strict';
-
 // Configutation options for the application
 // Please add any global configuration parameters for here
 angular.module('rewardners').

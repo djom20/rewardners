@@ -26,6 +26,7 @@ angular.module('rewardners', ['ionic', 'ui.router',
     .state('home.main', {
       url: '/promos',
       cache: false,
+      params: { promos: null },
       views: {
         'content': {
           templateUrl: 'views/promos-index.html',
@@ -43,6 +44,19 @@ angular.module('rewardners', ['ionic', 'ui.router',
         'content': {
           templateUrl: 'views/promos-taken-index.html',
           controller: 'PromosTakenController'
+        }
+      },
+      data: {
+        authentication: true
+      }
+    })
+    .state('home.promos_favorites', {
+      url: '/promos_favorites',
+      cache: false,
+      views: {
+        'content': {
+          templateUrl: 'views/promos-favorites-index.html',
+          controller: 'PromosFavoritesController'
         }
       },
       data: {

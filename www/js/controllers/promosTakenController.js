@@ -8,7 +8,6 @@ angular.module('rewardners')
     $scope.user = session.user;
     $scope.title = session.appName;
     $scope.sideMenu = 'Menu';
-    $scope.items = [];
     $scope.fullname = (session.user) ? session.user.full_name : '';
 
     //.:: ::.

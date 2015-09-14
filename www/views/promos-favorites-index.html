@@ -2,7 +2,7 @@
   <ion-content class="padding">
     <div class="list">
 
-      <a class="item item-thumbnail-left" href="#" collection-repeat="promo in promosTaken" ng-click="showPromo()">
+      <a class="item item-thumbnail-left" href="#" collection-repeat="promo in promosFavorites" ng-click="showPromo()">
         <img src="{{promo.getBannerUrl()}}">
         <h2><b>{{promo.name}}</b></h2>
         <h2>{{promo.place.name}}</h2>

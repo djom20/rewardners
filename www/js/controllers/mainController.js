@@ -29,12 +29,11 @@ angular.module('rewardners')
     function setMenuItems(){
       $scope.menuItems = [
         { title: "Coupons", href: "#/home/promos"},
-        { title: "Coupons taken", href: "#/home/promos_taken"}
-        // { title: "Favorites", href: "#/home/favorites"}
-        // ,
+        { title: "Coupons taken", href: "#/home/promos_taken"},
+        { title: "Favorites", href: "#/home/promos_favorites"}
         // { title: "Stars", href: "#"},
         // { title: "Redeems", href: "#"},
-        // { title: "Settings", href: "#"}
+        // { title: "Settings", href: "#"},
         // { title: "Categories", href: "#"}
       ];
       if ($scope.user.hasBussinessRole()){ 

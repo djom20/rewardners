@@ -50,22 +50,36 @@ angular.module('rewardners')
       }
     };
 
-    $scope.getTakenPromos = function(){
-      session.taken_promos = session.taken_promos || [];
-      if(session.taken_promos.length <= 0){
-        Promo.taken()
-        .then(function(promos) {
-            session.taken_promos = session.promos.concat(promos);
-        }, function(error){
-          console.log("An error happened matching the Taken Promos");
-        });
-      }
-    };
-
     $scope.showPromo = function () {
       $state.go('home.promo', { promo: this.promo } );
     };
 
+    $scope.clickSearch =  function clickSearch(){
+      if($scope.seachCriteria.length == 0){
+        $scope.showSearch = !$scope.showSearch;
+      }else{
+        $scope.search($scope.seachCriteria);
+      }
+    };
+
+    $scope.search = function search(){
+      Promo.search($scope.seachCriteria)
+      .then(function(promos){
+        $state.go('home.main', { promos: promos } );
+      }, function(error){
+        console.log("An error happened matching the Promos");
+        console.log(error);
+      });
+    };
+
     $scope.initialize();
+
+    function ensureFavorites(){
+      var liked_place_ids = []; 
+      angular.forEach($scope.promos, function(promo) {
+        if(liked_place_ids.indexOf(promo.place.id) != -1){ promo.place.liked_by_user = true; }
+        if(promo.place.liked_by_user){ liked_place_ids.push(promo.place.id); }
+      });
+    }
 
   });
