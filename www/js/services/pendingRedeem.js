@@ -24,8 +24,8 @@ angular.module('rewardnersServices')
       };
   };
 
-  PendingRedeem.pending = function() {
-    return PendingRedeem.listByAction("pending");
+  PendingRedeem.pending = function(userSearchCode) {
+    return PendingRedeem.listByAction("pending", {user_search_code: userSearchCode});
   };
 
   PendingRedeem.listByAction = function listByAction(action, extra_params){

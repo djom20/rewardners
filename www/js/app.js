@@ -108,6 +108,7 @@ angular.module('rewardners', ['ionic', 'ui.router',
     .state('home.pending_redeems', {
       url: '/pending_redeems',
       cache: false,
+      params: { pendingRedeems: null },
       views: {
         'content': {
           templateUrl: 'views/pending-redeems-index.html',
@@ -168,6 +169,19 @@ angular.module('rewardners', ['ionic', 'ui.router',
         'content': {
           templateUrl: 'views/places-show.html',
           controller: 'PlaceController'
+        }
+      },
+      data: {
+        authentication: true
+      }
+    })
+
+    .state('home.settings', {
+      url: '/settings',
+      views: {
+        'content': {
+          templateUrl: 'views/settings.html',
+          controller: 'SettingsController'
         }
       },
       data: {

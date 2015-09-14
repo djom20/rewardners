@@ -1,0 +1,61 @@
+<ion-view view-title="Settings">
+  <ion-content class="padding">
+    <div class="card">
+      <div class="item padding-top">
+        <div class="row row-center">
+          <div class="col"></div>
+          <div class="col">
+            <qrcode data="{{user.search_code}}" href="{{user.search_code}}" size="100" ></qrcode>
+          </div>
+          <div class="col"></div>
+        </div>
+        <p class="text-center">Use this QR code to help the cashier to find you.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class=" list">
+        <label class="item item-input">
+          <span class="input-label">Name</span>
+          <input type="text" ng-model="user.name">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Last name</span>
+          <input type="text" ng-model="user.last_name">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Address</span>
+          <input type="text" ng-model="user.address">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">City</span>
+          <input type="text" ng-model="user.city">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Zip Code</span>
+          <input type="text" ng-model="user.zipcode">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Phone</span>
+          <input type="text" ng-model="user.phone">
+        </label>  
+      </div>
+    </div>
+    <div class="card">
+      <div class=" list">
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="user.password">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Confirm Password</span>
+          <input type="password" ng-model="user.password_confirmation">
+        </label>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="submit()">
+          Update Settings
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

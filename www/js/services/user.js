@@ -5,7 +5,7 @@ angular.module('rewardnersServices')
   var resource = "users";
   var resource_singular = "user";
   var NESTED_MODELS = {promos: Promo}
-  var DEFAULT_CUSTOM_OBJECTS = ['fullname'];
+  var DEFAULT_CUSTOM_OBJECTS = ['fullname', 'roles', 'role', 'full_name', 'authentication_token'];
 
   var User = BaseModel.extend({
     $constructor: function User(properties) {
@@ -28,7 +28,7 @@ angular.module('rewardnersServices')
       }
       deferred.$promise.then(
         function(response){
-          var _data = getAttributes(response.user);
+          var _data = BaseModel.getAttributes(response.users[0], current.$constructor);
           angular.extend(current, _data)
           delete current["password"];
           angular.copy(_data, current.previousAttributes);

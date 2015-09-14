@@ -1,30 +1,34 @@
 'use strict';
 
 angular.module('rewardners')
-  .controller('PromosController', function($scope, $rootScope, $state,
+  .controller('PromosController', function($scope, $rootScope, $state, $stateParams,
       Promo, CurrentSession) {
     var session = CurrentSession.session;
 
     $scope.user = session.user;
     $scope.title = session.appName;
     $scope.sideMenu = 'Menu';
-    $scope.items = [];
     $scope.fullname = (session.user) ? session.user.full_name : '';
+    $scope.showSearch = false;
+    $scope.seachCriteria = "";
 
     //.:: ::.
 
     $scope.initialize = function(){
       $scope.setPromos();
-      // $scope.getTakenPromos();
     };
 
     $scope.setPromos = function() {
-
-      if (typeof session.promos === "undefined") {
-        $rootScope.loadingPromos = false;
-        $scope.getPromos();
-      }else{
-        $scope.promos = session.promos;
+      if ( $stateParams.promos === null ) {
+        if (typeof session.promos === "undefined") {
+          $rootScope.loadingPromos = false;
+          $scope.getPromos();
+        }else{
+          $scope.promos = session.promos;
+          ensureFavorites();
+        }
+      } else {
+        $scope.promos = $stateParams.promos;
       }
     };
 

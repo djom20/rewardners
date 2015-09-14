@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rewardners')
-  .controller('RegistrationController', function($scope, $rootScope, $state,
+  .controller('RegistrationController', function($scope, $state,
                                           User, RegistrationService,
                                           $ionicModal, $ionicPopup
                                           ) {

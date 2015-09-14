@@ -70,6 +70,10 @@ angular.module('rewardnersServices')
     return Promo.listByAction("by_place", {place_id: placeId});
   };
 
+  Promo.search = function(criteria, categories) {
+    return Promo.listByAction("search", {criteria: criteria, categories: categories});
+  };
+
   Promo.listByAction = function listByAction(action, extra_params){
     extra_params = typeof extra_params !== 'undefined' ? extra_params : {};
     var resourceParams = {resource: resource, method: action}; 
