@@ -5,14 +5,11 @@ angular.module('rewardners')
       PendingRedeem, CurrentSession) {
     var session = CurrentSession.session;
 
-    $scope.user = session.user;
-    $scope.title = session.appName;
-    $scope.sideMenu = 'Menu';
-    $scope.items = [];
-
-    //.:: ::.
+    
 
     $scope.initialize = function(){
+      $scope.user = session.user;
+      $scope.title = session.appName;
       $scope.setPendingRedeems();
     };
 

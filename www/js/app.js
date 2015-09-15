@@ -105,6 +105,21 @@ angular.module('rewardners', ['ionic', 'ui.router',
       }
     })
 
+    .state('home.stars', {
+      url: '/stars',
+      cache: false,
+      params: { pendingRedeems: null },
+      views: {
+        'content': {
+          templateUrl: 'views/stars-index.html',
+          controller: 'StarsController'
+        }
+      },
+      data: {
+        authentication: true
+      }
+    })
+
     .state('home.pending_redeems', {
       url: '/pending_redeems',
       cache: false,
@@ -119,6 +134,7 @@ angular.module('rewardners', ['ionic', 'ui.router',
         authentication: true
       }
     })
+
     .state('home.redeem_new', {
       url: '/redeem_new',
       cache: false,

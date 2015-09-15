@@ -1,0 +1,22 @@
+<ion-view view-title="Redeems">
+  <ion-content class="padding">
+    <div class="list">
+
+      <div class="item" collection-repeat="placeWithStars in placesWithStars" >
+        <div class="row row-center">
+          <div class="col col-75">
+            <h2><b>{{placeWithStars.name}}</b></h2>
+          </div>
+          <div class="col text-center">
+            <h2>
+              <b>{{placeWithStars.stars}}</b>
+              <i class="icon ion-star"></i>
+            </h2>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

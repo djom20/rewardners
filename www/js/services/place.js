@@ -59,25 +59,28 @@ angular.module('rewardnersServices')
   };
 
   Place.owned = function() {
-    var model = this;
-    var modelInstance = new model();
-    var _deferred = $q.defer();
-    var deferred = ApiResource.index({resource: resource, method: "owned"}, modelInstance.defaultOptions() );
-    deferred.$promise.then(
-      function(data){
-        BaseModel.loadModel(model, data, _deferred);
-      }, function(error){
-        _deferred.reject({status: error.status, message: error.statusText})
-      }
-    );
-    return _deferred.promise;
+    return Place.listByAction("owned");
   };
 
   Place.find = function(placeId) {
+    return Place.listByAction("info", {id: placeId});
+  };
+
+  Place.withStars = function(placeId) {
+    return Place.listByAction("stars");
+  };
+
+
+
+  Place.listByAction = function listByAction(action, extra_params){
+    extra_params = typeof extra_params !== 'undefined' ? extra_params : {};
+    var resourceParams = {resource: resource, method: action}; 
+    angular.extend(resourceParams, extra_params);
+
     var model = this;
     var modelInstance = new model();
     var _deferred = $q.defer();
-    var deferred = ApiResource.index({resource: resource, id: placeId, method: "info"}, modelInstance.defaultOptions() );
+    var deferred = ApiResource.index(resourceParams, modelInstance.defaultOptions() );
     deferred.$promise.then(
       function(data){
         BaseModel.loadModel(model, data, _deferred);

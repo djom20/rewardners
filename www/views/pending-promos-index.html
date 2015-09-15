@@ -5,12 +5,10 @@
   </ion-nav-buttons>
   <ion-content class="padding">
     <div class="list">
-
-      <!-- <div class="item item-thumbnail-left" collection-repeat="takenPromo in takenPromos" > -->
-        <!-- <img src="{{takenPromo.promo.getBannerUrl()}}"> -->
       <div class="item" collection-repeat="takenPromo in takenPromos" >
         <div class="row row-center">
           <div class="col">
+            <h2><b>{{takenPromo.user.full_name}}</b></h2>
             <h2>{{takenPromo.promo.name}}</h2>
             <p>{{takenPromo.date}}</p>
           </div>

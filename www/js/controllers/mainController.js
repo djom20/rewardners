@@ -31,7 +31,7 @@ angular.module('rewardners')
         { title: "Coupons", href: "#/home/promos"},
         { title: "Coupons taken", href: "#/home/promos_taken"},
         { title: "Favorites", href: "#/home/promos_favorites"},
-        // { title: "Stars", href: "#"},
+        { title: "Stars", href: "#/home/stars"},
         // { title: "Redeems", href: "#"},
         { title: "Settings", href: "#/home/settings"}
         // { title: "Categories", href: "#"}

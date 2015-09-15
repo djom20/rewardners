@@ -5,16 +5,13 @@ angular.module('rewardners')
       Promo, CurrentSession) {
     var session = CurrentSession.session;
 
-    $scope.user = session.user;
-    $scope.title = session.appName;
-    $scope.sideMenu = 'Menu';
-    $scope.fullname = (session.user) ? session.user.full_name : '';
-    $scope.showSearch = false;
-    $scope.seachCriteria = "";
-
-    //.:: ::.
-
     $scope.initialize = function(){
+      $scope.user = session.user;
+      $scope.title = session.appName;
+      // $scope.sideMenu = 'Menu';
+      $scope.fullname = (session.user) ? session.user.full_name : '';
+      $scope.showSearch = false;
+      $scope.seachCriteria = "";
       $scope.setPromos();
     };
 
@@ -66,14 +63,14 @@ angular.module('rewardners')
       }
     };
 
-    $scope.search = function search(){
-      Promo.search($scope.seachCriteria)
-      .then(function(promos){
-        $state.go('home.main', { promos: promos } );
-      }, function(error){
-        console.log("An error happened matching the Promos");
-        console.log(error);
-      });
+    $scope.search = function search(criteria){
+      Promo.search(criteria)
+        .then(function(promos){
+          $state.go('home.main', { promos: promos } );
+        }, function(error){
+          console.log("An error happened matching the Promos");
+          console.log(error);
+        });
     };
 
     $scope.initialize();

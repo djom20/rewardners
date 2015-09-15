@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('rewardnersServices')
-.factory('TakenPromo', function(ApiResource, $q, BaseModel, Promo) {
+.factory('TakenPromo', function(ApiResource, $q, BaseModel, Promo, User) {
   var resource = "taken_promos";
   var resource_singular = "taken_promo";
   var bannerUrl; 
-  var NESTED_MODELS = {promo: Promo};
+  var NESTED_MODELS = {promo: Promo, user: User};
 
   var TakenPromo = BaseModel.extend({
     $constructor: function TakenPromo(properties) {
