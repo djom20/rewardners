@@ -11,7 +11,7 @@ angular.module('rewardners')
       // $scope.sideMenu = 'Menu';
       $scope.fullname = (session.user) ? session.user.full_name : '';
       $scope.showSearch = false;
-      $scope.seachCriteria = "";
+      $scope.searchData = { criteria: ""};
       $scope.setPromos();
     };
 
@@ -56,10 +56,10 @@ angular.module('rewardners')
     };
 
     $scope.clickSearch =  function clickSearch(){
-      if($scope.seachCriteria.length == 0){
+      if($scope.searchData.criteria.length == 0){
         $scope.showSearch = !$scope.showSearch;
       }else{
-        $scope.search($scope.seachCriteria);
+        $scope.search($scope.searchData.criteria);
       }
     };
 
