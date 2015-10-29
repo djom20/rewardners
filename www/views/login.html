@@ -1,41 +1,41 @@
 <ion-view view-title="Rewardners">
-  <ion-content>
-    <div class="card">
-      <div class="item">
-        <div class="row row-center">
-          <div class="col"></div>
-          <div class="col">
-            <img src="./img/apple-touch-icon-114x114.png">
-          </div>
-          <div class="col"></div>
-        </div>
-      </div>
-      <div class=" list">
-        <label class="item item-input">
-          <span class="input-label">Email</span>
-          <input type="text" ng-model="auth.email">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="auth.password">
-        </label>
-      </div>
-      <div class="padding">
-        <button class="button button-block button-positive" ng-click="submit()">
-          Sign in
-        </button>
-        <!-- <p class="text-right">
+    <ion-content>
+        <div class="card">
+            <div class="item">
+                <div class="row row-center">
+                    <div class="col"></div>
+                    <div class="col logo">
+                        <img src="./img/apple-touch-icon-114x114.png">
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+            <div class=" list">
+                <label class="item item-input">
+                    <span class="input-label">Email</span>
+                    <input type="text" ng-model="auth.email" ng-init="auth.email = 'djom202@gmail.com'">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input type="password" ng-model="auth.password" ng-init="auth.password = '123456789'">
+                </label>
+            </div>
+            <div class="padding">
+                <button class="button button-block button-positive" ng-click="submit()">
+                    Sign in
+                </button>
+                <!-- <p class="text-right">
           <a class="subdued" href="#/forgot-password">Forgot password?</a>
         </p> -->
-      </div>
-    </div>
-    <div class="padding">
-        <p class="text-center ">
-          or
-        </p>
-        <button class="button button-block button-royal" ng-click="register()">
-          Sign up
-        </button>
-      </div>
-  </ion-content>
+            </div>
+        </div>
+        <div class="padding">
+            <p class="text-center ">
+                or
+            </p>
+            <button class="button button-block button-royal" ng-click="register()">
+                Sign up
+            </button>
+        </div>
+    </ion-content>
 </ion-view>

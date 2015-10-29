@@ -1,6 +1,7 @@
 angular.module('rewardners')
-    .controller('MainController', function($scope, $rootScope, $state,
-                                           CurrentSession) {
+    .controller('MainController', function($scope, $rootScope, $state, CurrentSession) {
+
+      
     // sanity check
     if (!CurrentSession.session.isAuthenticated())
       $state.go('login');

@@ -89,7 +89,6 @@ angular.module('rewardners', ['ionic', 'ui.router',
         authentication: true
       }
     })
-
     .state('home.pending_promos', {
       url: '/pending_promos',
       cache: false,

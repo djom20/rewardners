@@ -7,7 +7,8 @@ angular.module('rewardners').
       appName: 'Rewardners',
       api: {
         protocol: 'http',
-        server: 'localhost:3000',
+        // server: 'localhost:3000',
+        server: 'rewardners-st.herokuapp.com',
         inactivityLimit: 1795,    // seconds
         secret_key: '7efbdd96fe6709bba8642b697f9d5e52'
       },
